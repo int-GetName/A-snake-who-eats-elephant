@@ -38,10 +38,15 @@ bool move_snake(snake& it,vector<string>& pixs){
         case ' ':
             pixs[it.body.back().first][it.body.back().second]=' ';
             it.body.pop_back();
+            pixs[it.body.front().first][it.body.front().second]='+';
+            pixs[coor.first][coor.second]='*';
+            it.body.push_front(coor);
+            return 1;
         case '@':
             pixs[it.body.front().first][it.body.front().second]='+';
             pixs[coor.first][coor.second]='*';
             it.body.push_front(coor);
+            new_fruit(pixs);
             return 1;
         default:
             return 0;
@@ -59,4 +64,17 @@ char timed_getch(){
     if((ret=getch())!=EOF)
         return ret;
     else return 0;
+}
+
+void new_fruit(vector<string>& pixs){
+    unsigned seed;
+    int row,col;
+    do{
+        seed=time(0);
+        srand(seed);
+        row=1+rand()%(LENGTH-2);
+        col=1+rand()%(WIDTH-2);
+    }while(pixs[row][col]!=' ');
+    //The first time for me that do-while statement has played an necessary role
+    pixs[row][col]='@';
 }
