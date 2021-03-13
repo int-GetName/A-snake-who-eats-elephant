@@ -10,6 +10,8 @@
 #include<stdio.h>
 #include<ncurses.h>
 #include<cstdbool>
+#include<cstdlib>
+#include<ctime>
 using namespace std;
 //the width should be double of the length
 #define WIDTH 40
@@ -31,5 +33,6 @@ bool move_snake(snake&,vector<string>&);
 void refresh(const vector<string>&);
 void take_control(void);
 char timed_getch(void);
+void new_fruit(vector<string>&);
 
 #endif //!__GREEDY_H__
