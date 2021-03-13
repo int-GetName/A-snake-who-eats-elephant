@@ -6,8 +6,6 @@ int main(){
     init_pixels(pixels);
     init_snake(NBE1,pixels);
     
-    pixels[LENGTH-2][WIDTH/2]=pixels[1][WIDTH/2]='@';
-    
     initscr();
     noecho();
     refresh(pixels);    
